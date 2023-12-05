@@ -1,27 +1,16 @@
 # InfoWiki
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+Small Angular project to learn and test new templating syntax in Angular syntax. This involves new template directives, standalone components.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Tech stack
+This project utilises following external libraries:
+- PrimNG as UI layer.
+- Angular Query as server side state management.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Screenshots
+<img width="2090" alt="image" src="https://github.com/Monfernape/info-wiki/assets/22314247/449bfad6-0f85-42e8-873f-77e1be98bd9e">
+<img width="2090" alt="image" src="https://github.com/Monfernape/info-wiki/assets/22314247/410a4a02-b686-4ad5-9698-c72381403a32">
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
