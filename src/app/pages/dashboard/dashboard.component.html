@@ -1,5 +1,5 @@
 <div class="container">
-  <div>
+  <div class="cat-fact-container">
     @if (catFact.result$ | async; as result) { @if (result.isLoading) {
     <p>Loading</p>
     } @if (result.isSuccess) {

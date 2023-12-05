@@ -28,19 +28,7 @@ import { isWindowDefined } from "../utils";
     <p-menubar [model]="menuItems">
       <ng-template pTemplate="end">
         <span style="align-items: center; display: inline-flex;gap:10px">
-          <span
-            style="align-items: center; display: flex; cursor: pointer; padding: 0.5rem;"
-          >
-            <p-avatar
-              image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-              styleClass="mr-2"
-              size="normal"
-              shape="circle"
-            ></p-avatar>
-            {{ username}}
-          </span>
-          <i class="pi pi-bell text-3xl"></i>
-          <input
+        <input
             type="text"
             pInputText
             placeholder="Search"
@@ -53,6 +41,50 @@ import { isWindowDefined } from "../utils";
             #searchIcon
             (click)="showSearchInput(searchInput, searchIcon)"
           ></i>
+          <p-menu #menu [model]="notifications" [popup]="true">
+            <ng-template pTemplate="item" let-item>
+              <a
+                class="p-menuitem-link flex justify-content-between align-items-center p-3"
+              >
+                <div>
+                  <span> {{ item.label }}</span>
+                </div>
+                <div>
+                  <span *ngIf="item.shortcut" [class]="item.shortcutClass">{{
+                    item.shortcut
+                  }}</span>
+                </div>
+              </a>
+            </ng-template>
+          </p-menu>
+          <i (click)="menu.toggle($event)" class="pi pi-bell text-3xl"></i>
+          <span
+            style="align-items: center; display: flex; cursor: pointer; padding: 0.5rem;"
+          >
+            <p-avatar
+              image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+              styleClass="mr-2"
+              size="normal"
+              shape="circle"
+              (click)="userActionsMenu.toggle($event)"
+            ></p-avatar>
+            <p-menu #userActionsMenu [model]="userActions" [popup]="true">
+            <ng-template pTemplate="item" let-item>
+              <a
+                class="p-menuitem-link flex justify-content-between align-items-center p-3"
+              >
+                <div>
+                  <span> {{ item.label }}</span>
+                </div>
+                <div>
+                  <span *ngIf="item.shortcut" [class]="item.shortcutClass">{{
+                    item.shortcut
+                  }}</span>
+                </div>
+              </a>
+            </ng-template>
+          </p-menu>
+          </span>
         </span>
       </ng-template>
     </p-menubar>
@@ -63,6 +95,35 @@ import { isWindowDefined } from "../utils";
 export class Header {
   isLogin: boolean = true;
   username = isWindowDefined ? window?.localStorage?.getItem?.("username") : "";
+  notifications = [
+    {
+      label: 'Notifications',
+      items: [
+          {
+              label: 'John sent you a message',
+              escape: false,
+              icon: 'pi pi-refresh',
+              iconClass: 'text-xl'
+          },
+      ]
+  }
+  ];
+  userActions = [
+    {
+      label: this.username || '',
+      items: [
+          {
+              label: 'Log out',
+              escape: false,
+              icon: 'pi pi-refresh',
+              iconClass: 'text-xl',
+              command: () => {
+                this.router.navigate(['/login']);
+              }
+          },
+      ]
+  }
+  ];
   menuItems: MenuItem[] = [
     {
       label: "Dashboard",

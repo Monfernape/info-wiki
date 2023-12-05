@@ -26,3 +26,8 @@ p-card {
     padding: 40px;
   }
 }
+
+.cat-fact-container {
+  width: 100%;
+  max-width: 525px;
+}
