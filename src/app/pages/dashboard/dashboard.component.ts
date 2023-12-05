@@ -36,15 +36,9 @@ export class DashboardPage {
   fetchCount = 0;
   catFact = inject(CatService).getCatFact(this.fetchCount);
   sunInfoService = inject(SunInfoService);
-  latitude: number = isWindowDefined
-    ? Number(window?.localStorage?.getItem?.("latitude")) ?? 0
-    : 0;
-  longitude: number = isWindowDefined
-    ? Number(window?.localStorage?.getItem?.("longitude")) ?? 0
-    : 0;
-  date: string = isWindowDefined
-    ? window?.localStorage?.getItem?.("longitude") ?? new Date().toDateString()
-    : "";
+  latitude: number = Number(window?.localStorage?.getItem?.("latitude")) ?? 0
+  longitude: number = Number(window?.localStorage?.getItem?.("longitude")) ?? 0
+  date: string = window?.localStorage?.getItem?.("date") ?? new Date().toDateString()
   sunQuery = new BehaviorSubject({
     lat: this.latitude,
     lng: this.longitude,
@@ -61,7 +55,7 @@ export class DashboardPage {
   onGetSunInfo() {
     window.localStorage.setItem("latitude", JSON.stringify(this.latitude));
     window.localStorage.setItem("longitude", JSON.stringify(this.longitude));
-    window.localStorage.setItem("date", JSON.stringify(this.date));
+    window.localStorage.setItem("date", this.date);
     this.sunQuery.next({
       lat: this.latitude,
       lng: this.longitude,
