@@ -1,0 +1,64 @@
+<div class="container">
+  <div>
+    @if (catFact.result$ | async; as result) { @if (result.isLoading) {
+    <p>Loading</p>
+    } @if (result.isSuccess) {
+    <p-card header="Cat Fact">
+      <ng-template pTemplate="header">
+        <div style="display: flex; justify-content: flex-end; margin: 10px">
+          <p-button
+            icon="pi pi-sync"
+            severity="success"
+            (click)="refetchCatFact()"
+          >
+          </p-button>
+        </div>
+      </ng-template>
+      <p>{{ result.data.fact }}</p>
+    </p-card>
+    } @if (result.isError) {
+    <p>Error</p>
+    } }
+  </div>
+  <div>
+    <!-- ِSun Rise and Sun Set API section -->
+    @if (sunData$ | async; as result) { @if (result.isLoading) {
+    <p>Loading</p>
+    } @if (result.isSuccess) {
+
+    <p-card header="Sun Rise and Sun Set">
+      <ng-template pTemplate="header">
+        <div style="display: flex; justify-content: flex-end">
+          <p-button
+            label="Find"
+            icon="pi pi-search"
+            severity="success"
+            (click)="onGetSunInfo()"
+          ></p-button>
+        </div>
+      </ng-template>
+      <p>Sunrise {{ result.data.results.sunrise }}</p>
+      <p>Sunset {{ result.data.results.sunset }}</p>
+      <p-inputNumber
+        [(ngModel)]="latitude"
+        inputId="minmaxfraction"
+        mode="decimal"
+        [minFractionDigits]="2"
+        [maxFractionDigits]="5"
+      >
+      </p-inputNumber>
+      <p-inputNumber
+        class=""
+        [(ngModel)]="longitude"
+        inputId="minmaxfraction"
+        mode="decimal"
+        [minFractionDigits]="2"
+        [maxFractionDigits]="5"
+        width="100%"
+      >
+      </p-inputNumber>
+      <input type="date" [(ngModel)]="date" class="date-picker">
+    </p-card>
+    } }
+  </div>
+</div>

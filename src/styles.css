@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/md-light-deeppurple/theme.css";
+@import "primeicons/primeicons.css";
+@import "primeng/resources/primeng.css";
+
+html,
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+footer {
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}
+
+p-inputnumber ,.p-inputnumber{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.p-calendar {
+    width: 100%;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,19 @@
+<div class="login-container">
+  <p-card>
+    <div class="card">
+      <input
+        type="text"
+        pInputText
+        placeholder="Enter Username"
+        class="full-width"
+        [(ngModel)]="username"
+      />
+      <p-button
+        label="OK"
+        severity="success"
+        class="full-width login-action"
+        (onClick)="onLogin()"
+      ></p-button>
+    </div>
+  </p-card>
+</div>
