@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, signal } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Router, NavigationEnd, RouterModule } from "@angular/router";
 
@@ -94,7 +94,7 @@ import { isWindowDefined } from "../utils";
 })
 export class Header {
   isLogin: boolean = true;
-  username = isWindowDefined ? window?.localStorage?.getItem?.("username") : "";
+  username = signal(window?.localStorage?.getItem?.("username") ?? 'User');
   notifications = [
     {
       label: 'Notifications',
@@ -110,7 +110,7 @@ export class Header {
   ];
   userActions = [
     {
-      label: this.username || '',
+      label: this.username() || '',
       items: [
           {
               label: 'Log out',
@@ -119,6 +119,8 @@ export class Header {
               iconClass: 'text-xl',
               command: () => {
                 this.router.navigate(['/login']);
+                this.username.set('');
+                window.localStorage.clear()
               }
           },
       ]
@@ -138,6 +140,8 @@ export class Header {
     router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.isLogin = event.urlAfterRedirects === "/login";
+        this.username.set(window?.localStorage?.getItem?.("username") ?? '');
+        console.log(this.username())
       }
     });
   }
