@@ -3,11 +3,11 @@
   "version": 1,
   "cli": {
     "packageManager": "npm",
-    "analytics": "400e2177-335c-4506-954d-1d23595203e6"
+    "analytics": "1d98927c-9c89-49ea-9456-76caf944a2ed"
   },
   "newProjectRoot": "projects",
   "projects": {
-    "info-wiki": {
+    "myApp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/info-wiki",
+            "outputPath": "dist/my-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -33,12 +33,7 @@
               "node_modules/primeng/resources/themes/md-light-deeppurple/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -68,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "info-wiki:build:production"
+              "buildTarget": "myApp:build:production"
             },
             "development": {
-              "buildTarget": "info-wiki:build:development"
+              "buildTarget": "myApp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "info-wiki:build"
+            "buildTarget": "myApp:build"
           }
         },
         "test": {
