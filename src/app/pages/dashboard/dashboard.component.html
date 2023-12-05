@@ -9,7 +9,8 @@
           <p-button
             icon="pi pi-sync"
             severity="success"
-            (click)="refetchCatFact()"
+            [disabled]="result.isLoading"
+            (click)="result.refetch()"
           >
           </p-button>
         </div>
